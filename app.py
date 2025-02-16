@@ -39,6 +39,7 @@ if not hasattr(np, 'bool'):
 MODEL_THRESH = 0.6
 EVAL_MAX_CLICKS = None
 brs_mode = 'NoBRS'
+device = 'cpu'#torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # -------------------------------
 # ImageViewer Class
@@ -163,7 +164,7 @@ class MainWindow(QMainWindow):
                 from segment_anything import sam_model_registry, SamPredictor
                 sam_checkpoint = "../sam_vit_h_4b8939.pth"  # <<-- Update this path
                 model_type = "vit_h"  # or "vit_l", "vit_b"
-                device_sam = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+                device_sam = device
                 
                 print("Running SAM Model on device:", device_sam)
                 self.sam = sam_model_registry[model_type](checkpoint=sam_checkpoint)
@@ -180,7 +181,7 @@ class MainWindow(QMainWindow):
             cfg = exp.load_config_file('./isegm/config.yml', return_edict=True)
             ritm_checkpoint = './isegm/ritm_corals.pth'  # <<-- Update this path if needed
             ritm_checkpoint = utils.find_checkpoint(cfg.INTERACTIVE_MODELS_PATH, ritm_checkpoint)
-            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            self.device = device
             
             print("Running RITM Model on device:", self.device)
             

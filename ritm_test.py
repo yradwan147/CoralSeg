@@ -70,6 +70,9 @@ clicks_list, pred, pred_mask = evaluate_sample_reefnet(image, None, predictor,
                         max_iou_thr=None, max_clicks=EVAL_MAX_CLICKS, clicks=points, prev_mask=prev_mask)
 
 print(np.unique(pred_mask, return_counts=True))
+# (array([False,  True]), array([1552162,   27038], dtype=int64))
+
+
 # draw = vis.draw_with_blend_and_clicks(image, mask=pred_mask, clicks_list=clicks_list, alpha=0.5)
 
 plt.figure(figsize=(40, 60))
