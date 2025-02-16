@@ -501,9 +501,3 @@ if __name__ == "__main__":
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
-
-
-# TODO: Integrate RITM
-# TODO: Cleanup code and create requirements file
-# TODO: First commit github repository
-# TODO: Attmept to build executable
