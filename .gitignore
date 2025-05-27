@@ -1,4 +1,4 @@
 build
 dist
 *.spec
-object_*
+/object_*
